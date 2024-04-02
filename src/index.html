@@ -1,0 +1,434 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <title>Analizar cuadráticas</title>
+</head>
+<body class="px-8 py-4 bg-principal-white text-principal-white h-full font-['Poppins']">
+    <header class="flex gap-x-6">
+        <section class="w-full h-auto bg-principal-purple-two px-12 py-8 rounded-lg">
+            <h1 class="text-4xl font-semibold ">Analizador de funciones cuadráticas</h1>	
+        </section>
+        <section class="px-12 py-8 bg-principal-purple-two rounded-lg w-full">
+            <div>
+                <p class="text-xl">
+                    Introduce la función cuadrática:
+                </p>
+            </div>
+            <div class="flex justify-between mt-4 text-xl">
+                <div class="flex">
+                    y = 
+                    <input type="number" id="input1" class="mx-2 h-8 w-10 px-1 text-principal-black bg-principal-white rounded-md"/>
+                    x<sup class="mt-2">2</sup> + 
+                    <input type="number" id="input2" class="mx-2 h-8 w-10 px-1 text-principal-black bg-principal-white rounded-md"/>
+                    x + 
+                    <input type="number" id="input3" class="mx-2 h-8 w-10 px-1 text-principal-black bg-principal-white rounded-md"/>
+                </div>
+                <div>
+                    <button onclick="recogerDatos()" class="h-10 px-2 text-principal-black bg-principal-white rounded-md">
+                        ¡Analizar!
+                    </button>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main class="h-full w-full mt-6">
+        <!-- Valor de a, vértice, puntos de corte con los ejes, tabla de valores y ¿gráfica? -->
+        <section class="px-6 py-4 rounded-lg w-full bg-principal-purple-two" id="campoA">
+            El valor de a es ¿?, ¿? que 0, por lo que la parábola está abierta hacia ¿?.
+        </section>
+        <section class="flex h-full mt-6 gap-x-6">
+            <article class="bg-principal-purple-two h-auto px-6 py-4 rounded-lg items-center text-center justify-center flex">
+                <div class="bg-principal-purple-two px-2 py-2 ready" id="plot"></div>
+            </article>
+            <article class="bg-principal-purple-two h-auto w-full px-6 py-4 rounded-lg items-center text-center">
+                Punto(s) de corte con el eje x (y = 0):
+                <math class="my-6" display="block">
+                    <mi>0</mi>
+                    <mo>=</mo>
+                    <mn class="valorA">a</mn>
+                    <mo>·</mo>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </msup>
+                    <mo>+</mo>
+                    <mn class="valorB">b</mn>
+                    <mo>·</mo>
+                    <mi>x</mi>
+                    <!-- signo de c -->
+                    <mo>+</mo>
+                    <mn class="valorC">c</mn>
+                    <mo>&#8658;</mo>
+                    <mrow>
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <!-- sustituir valores de a, b, c -->
+                    <mfrac>
+                        <mrow>
+                        <mo>-</mo>
+                        <mi class="valorB">b</mi>
+                        <mo>±</mo>
+                        <msqrt>
+                            <mrow>
+                            <msup>
+                                <mi class="valorB">b</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>-</mo>
+                            <mn>4</mn>
+                            <mo>·</mo>
+                            <mi class="valorA">a</mi>
+                            <mo>·</mo>
+                            <mi class="valorC">c</mi>
+                            </mrow>
+                        </msqrt>
+                        </mrow>
+                        <mrow>
+                        <mn>2</mn>
+                        <mo>·</mo>
+                        <mi class="valorA">a</mi>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <msub id="campoCorteX1">
+                        <mi>x</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <mo id="campoCorteXAux">y</mo>
+                    <msub id="campoCorteX2">
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </msub>
+                    </mrow>
+                </math>
+                <div id="campoCorteX">
+                    El/los puntos de corte con el eje x son (¿?,0) y (¿?,0)
+                </div>
+                <hr class="my-4">
+                Punto(s) de corte con el eje y (x = 0):
+                <math class="my-6" display="block">
+                    <msub>
+                        <mi>y</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mrow>
+                        <!-- valor de a -->
+                        <mi class="valorA">a</mi>
+                        <mo>·</mo>
+                        <msup>
+                            <mn>0</mn>
+                            <mn>2</mn>
+                        </msup>
+                    </mrow>
+                    <!-- signo de b -->
+                    <mo>+</mo>
+                    <mrow>
+                        <!-- valor de b -->
+                        <mi class="valorB">b</mi>
+                        <mo>·</mo>
+                        <mn>0</mn>
+                    </mrow>
+                    <!-- signo de c -->
+                    <mo>+</mo>
+                    <!-- valor de c -->
+                    <mi class="valorC">c</mi>
+                    <mo>=</mo>
+                    <!-- valor de c -->
+                    <mi class="valorC">c</mi>
+                </math>
+                <!-- coordenadas -->
+                El punto de corte con el eje y se encuentra en el punto (0, <span class="valorC">¿?</span>)
+            </article>
+            <article class="h-full">
+                <div  class="bg-principal-purple-two w-full px-6 py-4 rounded-lg items-center text-center mb-6 h-auto">
+                    <p>
+                        Valor del vértice:
+                    </p>
+                    
+                    <math display="block" class="mt-6">
+                        <msub>
+                            <mi>x</mi>
+                            <mn>v</mn>
+                        </msub>
+                        <mo>=</mo>
+                        <mfrac>
+                        <mrow>
+                            <mo>-</mo>
+                            <mi class="valorB">b</mi>
+                        </mrow>
+                        <mrow>
+                            <mn>2</mn>
+                            <mo>·</mo>
+                            <mi class="valorA">a</mi>
+                        </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <!-- valor de x para el vértice -->
+                        <mi class="valorVerticeX2">¿?</mi>
+                    </math>
+
+                    <math class="my-6" display="block">
+                        <msub>
+                            <mi>y</mi>
+                            <mn>v</mn>
+                        </msub>
+                        <mo>=</mo>
+                        <mrow>
+                            <!-- valor de a -->
+                            <mi class="valorA">a</mi>
+                            <mo>·</mo>
+                            <msup>
+                                <mi class="valorVerticeX1">x</mi>
+                                <mn>2</mn>
+                            </msup>
+                        </mrow>
+                        <!-- signo de b -->
+                        <mo>+</mo>
+                        <mrow>
+                            <!-- valor de b -->
+                            <mi class="valorB">b</mi>
+                            <mo>·</mo>
+                            <mi class="valorVerticeX1">x</mi>
+                        </mrow>
+                        <!-- signo de c -->
+                        <mo>+</mo>
+                        <!-- valor de c -->
+                        <mi class="valorC">c</mi>
+                        <mo>=</mo>
+                        <!-- valor de y para el vértice -->
+                        <mi class="valorVerticeY">¿?</mi>
+                    </math>
+                    <p>
+                        <!-- Coordenadas del vértice -->
+                        El vértice se encuentra en el punto (<span class="valorVerticeX2">¿?</span>, <span class="valorVerticeY"></span>)
+                    </p>
+                </div>
+                <div class="bg-principal-purple-two w-full px-6 py-4 rounded-lg items-center text-center justify-center flex h-full">
+                    <table class="[&>tr>th]:border">
+                        <tr class="[&>td]:px-2 [&>th]:border [&>td]:border">
+                          <th class="px-2">x</th>
+                          <td id="campoX1">¿?</td>
+                          <td id="campoX2">¿?</td>
+                          <td id="campoX3">¿?</td>
+                          <td id="campoX4">¿?</td>
+                          <td id="campoX5">¿?</td>
+                        </tr>
+                        <tr class="[&>td]:px-2 [&>th]:border [&>td]:border">
+                          <th>y</th>
+                          <td id="campoY1">¿?</td>
+                          <td id="campoY2">¿?</td>
+                          <td id="campoY3">¿?</td>
+                          <td id="campoY4">¿?</td>
+                          <td id="campoY5">¿?</td>
+                        </tr>
+                      </table>
+                </div>
+                
+            </article>
+        </section>
+    </main>
+</body>
+</html>
+
+<script>
+    function draw() {
+        try {
+          functionPlot({
+            target: '#plot',
+            data: [{
+              fn: "x^2",
+              sampler: 'builtIn',  // this will make function-plot use the evaluator of math.js
+              graphType: 'polyline'
+            }]
+          });
+        }
+        catch (err) {
+          console.log(err);
+          alert(err);
+        }
+      }
+    
+      draw();
+
+    function recogerDatos() {
+        const a = parseFloat(document.getElementById("input1").value);
+        const b = parseFloat(document.getElementById("input2").value);
+        const c = parseFloat(document.getElementById("input3").value);
+    
+        const funcion = `${a}x^2 + ${b}x + ${c}`
+    
+        console.log(`Mostrando resultados para la función ${funcion}.`)
+        
+        let valorA = document.getElementsByClassName("valorA")
+        for (i = 0; i < valorA.length; i++){
+            if (a<0){
+                valorA[i].innerHTML = `(-${a*(-1)})`
+            } else {
+                valorA[i].innerHTML = a
+            }
+        }
+
+        let valorB = document.getElementsByClassName("valorB")
+        for (i = 0; i < valorB.length; i++){
+            if (b<0){
+                valorB[i].innerHTML = `(-${b*(-1)})`
+            } else {
+                valorB[i].innerHTML = b
+            }
+        }
+
+        let valorC = document.getElementsByClassName("valorC")
+        for (i = 0; i < valorC.length; i++){
+            if (c<0){
+                valorC[i].innerHTML = `(-${c*(-1)})`
+            } else {
+                valorC[i].innerHTML = c
+            }
+        }
+
+        // Valor de a y relación con la apertura de la parábola
+
+        let campoA = document.getElementById("campoA")
+        
+    
+        console.log("\nIdentificación de a:")
+        if (a > 0) {
+        console.log(`El valor de a es ${a}, mayor que 0, por lo que la parábola está abierta hacia arriba.`)
+        campoA.innerHTML=`El valor de a es ${a}, mayor que 0, por lo que la parábola está abierta hacia arriba.`
+        } else {
+        console.log(`El valor de a es ${a}, menor que 0, por lo que la parábola está abierta hacia abajo.`)
+        campoA.innerHTML=`El valor de a es ${a}, menor que 0, por lo que la parábola está abierta hacia abajo.`
+        }
+    
+        // Cálculo del vértice
+
+        console.log("\nCálculo del vértice:")
+        const x_v = -b / (2 * a)
+        const y_v = a * x_v * x_v + b * x_v + c
+        console.log(`El vértice se encuentra en el punto (${x_v}, ${y_v}).`)
+
+        let valorVerticeX1 = document.getElementsByClassName("valorVerticeX1")
+        for (i = 0; i < valorVerticeX1.length; i++){
+            if (x_v<0){
+                valorVerticeX1[i].innerHTML = `(-${x_v*(-1)})`
+            } else {
+                valorVerticeX1[i].innerHTML = x_v
+            }
+        }
+
+        let valorVerticeX2 = document.getElementsByClassName("valorVerticeX2")
+        for (i = 0; i < valorVerticeX2.length; i++){
+            valorVerticeX2[i].innerHTML = x_v
+        }
+
+        let valorVerticeY = document.getElementsByClassName("valorVerticeY")
+        for (i = 0; i < valorVerticeY.length; i++){
+            valorVerticeY[i].innerHTML = y_v
+        }
+    
+        // Puntos de corte con los ejes de coordenadas
+        
+        let campoCorteX1 = document.getElementById("campoCorteX1")
+        let campoCorteX2 = document.getElementById("campoCorteX2")
+        let campoCorteXAux = document.getElementById("campoCorteXAux")
+        let campoCorteX = document.getElementById("campoCorteX")
+
+        console.log("\nPunto(s) de corte con el eje x:")
+        discriminante = b * b - 4 * a * c
+        if (discriminante > 0) {
+            x1 = (-b + discriminante) / (2 * a)
+            x2 = (-b - discriminante) / (2 * a)
+            campoCorteX1.innerHTML = `<mn>${x1}</mn>`
+            campoCorteX2.innerHTML = `<mn>${x2}</mn>`
+            campoCorteXAux.innerHTML = "y"
+            campoCorteX.innerHTML = `Los puntos de corte con el eje x son (${x1}, 0) y (${x2}, 0)`
+        } else if (discriminante < 0) {
+            campoCorteX1.innerHTML = "<mi>x</mi>"
+            campoCorteX2.innerHTML = "<mi>ℝ</mi>"
+            campoCorteXAux.innerHTML = "∉"
+            campoCorteX.innerHTML = `No hay puntos de corte con el eje x`
+        } else {
+            x = -b / (2 * a)
+            campoCorteX1.innerHTML = `<mn>${x}</mn>`
+            campoCorteX2.innerHTML = ""
+            campoCorteXAux.innerHTML = ""
+            campoCorteX.innerHTML = `El punto de corte con el eje x es (${x}, 0)`
+        }
+        
+        console.log("\nPunto de corte con el eje y:")
+        y = c
+        console.log(`El punto de corte con el eje y es (0,${y})`)
+    
+        // Tabla de valores
+        
+        console.log("\nTabla de valores:")
+        let valores = []
+        for (let i = 0; i < 5; i++){
+            x_i = x_v + i - 2
+            y_i = a * x_i *x_i + b * x_i + c
+            valores.push((x_i, y_i))
+            console.log(`(${x_i}, ${y_i})`)
+        }
+
+        let campoX1 = document.getElementById("campoX1")
+        let campoX2 = document.getElementById("campoX2")
+        let campoX3 = document.getElementById("campoX3")
+        let campoX4 = document.getElementById("campoX4")
+        let campoX5 = document.getElementById("campoX5")
+        let campoY1 = document.getElementById("campoY1")
+        let campoY2 = document.getElementById("campoY2")
+        let campoY3 = document.getElementById("campoY3")
+        let campoY4 = document.getElementById("campoY4")
+        let campoY5 = document.getElementById("campoY5")
+
+        campoX1.innerHTML = x_v-2
+        campoX2.innerHTML = x_v-1
+        campoX3.innerHTML = x_v
+        campoX4.innerHTML = x_v+1
+        campoX5.innerHTML = x_v+2
+
+        campoY1.innerHTML = valores[0]
+        campoY2.innerHTML = valores[1]
+        campoY3.innerHTML = valores[2]
+        campoY4.innerHTML = valores[3]
+        campoY5.innerHTML = valores[4]
+
+        console.log(valores)
+        console.log(valores[0])
+    
+        function draw() {
+        try {
+          functionPlot({
+            target: '#plot',
+            data: [{
+              fn: funcion,
+              sampler: 'builtIn',  // this will make function-plot use the evaluator of math.js
+              graphType: 'polyline'
+            }]
+          });
+        }
+        catch (err) {
+          console.log(err);
+          alert(err);
+        }
+      }
+    
+      draw();
+    }
+        
+</script>
+
+<style is:global>
+	@font-face {
+        font-family: "Poppins";
+        src: url("./poppins.woff");
+    }
+	html{
+		font-family: "Poppins", system-ui, sans-serif;
+	}
+</style>
