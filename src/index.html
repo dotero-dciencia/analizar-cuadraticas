@@ -9,24 +9,24 @@
   <title>Analizar cuadráticas</title>
 </head>
 <body class="px-8 py-4 bg-principal-white text-principal-white h-full font-['Poppins']">
-    <header class="flex gap-x-6">
-        <section class="w-full h-auto bg-principal-purple-two px-12 py-8 rounded-lg">
-            <h1 class="text-4xl font-semibold ">Analizador de funciones cuadráticas</h1>	
+    <header class="flex-col flex gap-x-6 lg:flex-row gap-y-6">
+        <section class="w-full h-auto bg-principal-purple-two px-6 py-3 md:px-12 md:py-8 rounded-lg">
+            <h1 class="text-2xl md:text-4xl font-semibold ">Analizador de funciones cuadráticas</h1>	
         </section>
-        <section class="px-12 py-8 bg-principal-purple-two rounded-lg w-full">
+        <section class="px-6 py-3 md:px-12 md:py-8 bg-principal-purple-two rounded-lg w-full">
             <div>
-                <p class="text-xl">
+                <p class="text-base md:text-xl">
                     Introduce la función cuadrática:
                 </p>
             </div>
-            <div class="flex justify-between mt-4 text-xl">
+            <div class="flex justify-between mt-4 text-base md:text-xl">
                 <div class="flex">
                     y = 
-                    <input type="number" id="input1" class="mx-2 h-8 w-10 px-1 text-principal-black bg-principal-white rounded-md"/>
+                    <input type="number" id="input1" class="mx-2 h-6 w-8 md:h-8 md:w-10 px-1 text-principal-black bg-principal-white rounded-md"/>
                     x<sup class="mt-2">2</sup> + 
-                    <input type="number" id="input2" class="mx-2 h-8 w-10 px-1 text-principal-black bg-principal-white rounded-md"/>
+                    <input type="number" id="input2" class="mx-2 h-6 w-8 md:h-8 md:w-10 px-1 text-principal-black bg-principal-white rounded-md"/>
                     x + 
-                    <input type="number" id="input3" class="mx-2 h-8 w-10 px-1 text-principal-black bg-principal-white rounded-md"/>
+                    <input type="number" id="input3" class="mx-2 h-6 w-8 md:h-8 md:w-10 px-1 text-principal-black bg-principal-white rounded-md"/>
                 </div>
                 <div>
                     <button onclick="recogerDatos()" class="h-10 px-2 text-principal-black bg-principal-white rounded-md">
