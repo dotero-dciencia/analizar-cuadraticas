@@ -48,7 +48,8 @@
             <div class="flex gap-x-6 h-auto flex-col lg:flex-row gap-y-4 md:gap-y-6">
                 <article class="bg-principal-purple-two h-auto w-full px-6 py-4 rounded-lg items-center text-center">
                     Punto(s) de corte con el eje x (y = 0):
-                    <math class="my-6" display="block">
+                    <div class="hidden lg:block">
+                    <math class="my-6" display="block" >
                         <mi>0</mi>
                         <mo>=</mo>
                         <mn class="valorA">a</mn>
@@ -107,6 +108,69 @@
                         </msub>
                         </mrow>
                     </math>
+                    </div>
+                    <div class="block lg:hidden">
+                        <math class="my-6" display="block" >
+                            <mi>0</mi>
+                            <mo>=</mo>
+                            <mn class="valorA">a</mn>
+                            <mo>·</mo>
+                            <msup>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>+</mo>
+                            <mn class="valorB">b</mn>
+                            <mo>·</mo>
+                            <mi>x</mi>
+                            <!-- signo de c -->
+                            <mo>+</mo>
+                            <mn class="valorC">c</mn>
+                        </math>
+                        <math display="block" class="mb-6">
+                            <mrow>
+                            <mi>x</mi>
+                            <mo>=</mo>
+                            <!-- sustituir valores de a, b, c -->
+                            <mfrac>
+                                <mrow>
+                                <mo>-</mo>
+                                <mi class="valorB">b</mi>
+                                <mo>±</mo>
+                                <msqrt>
+                                    <mrow>
+                                    <msup>
+                                        <mi class="valorB">b</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>-</mo>
+                                    <mn>4</mn>
+                                    <mo>·</mo>
+                                    <mi class="valorA">a</mi>
+                                    <mo>·</mo>
+                                    <mi class="valorC">c</mi>
+                                    </mrow>
+                                </msqrt>
+                                </mrow>
+                                <mrow>
+                                <mn>2</mn>
+                                <mo>·</mo>
+                                <mi class="valorA">a</mi>
+                                </mrow>
+                            </mfrac>
+                            <mo>=</mo>
+                            <msub id="campoCorteX1">
+                                <mi>x</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo id="campoCorteXAux">y</mo>
+                            <msub id="campoCorteX2">
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msub>
+                            </mrow>
+                        </math>
+                        </div>
                     <div id="campoCorteX">
                         El/los puntos de corte con el eje x son (¿?,0) y (¿?,0)
                     </div>
