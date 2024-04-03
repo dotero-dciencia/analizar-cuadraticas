@@ -319,12 +319,24 @@
         }
       }
     
-      draw();
+    draw();
 
     function recogerDatos() {
         const a = parseFloat(document.getElementById("input1").value);
         const b = parseFloat(document.getElementById("input2").value);
         const c = parseFloat(document.getElementById("input3").value);
+
+        
+
+        if (a == 0){
+            window.alert("Introduce un valor distinto de 0 para el coeficiente 'a'.")
+        } else {
+            operar(a, b, c)
+        }
+    }
+
+    function operar(a, b, c) {
+        
     
         const funcion = `${a}x^2 + ${b}x + ${c}`
     
