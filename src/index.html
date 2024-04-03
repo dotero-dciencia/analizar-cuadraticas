@@ -386,8 +386,9 @@
         // Cálculo del vértice
 
         console.log("\nCálculo del vértice:")
-        const x_v = -b / (2 * a)
-        const y_v = a * x_v * x_v + b * x_v + c
+        console.log(-b / (2 * a))
+        const x_v = Math.round(-b / (2 * a)*100)/100
+        const y_v = Math.round((a * x_v * x_v + b * x_v + c)*100)/100
         console.log(`El vértice se encuentra en el punto (${x_v}, ${y_v}).`)
 
         let valorVerticeX1 = document.getElementsByClassName("valorVerticeX1")
@@ -419,8 +420,8 @@
         console.log("\nPunto(s) de corte con el eje x:")
         discriminante = b * b - 4 * a * c
         if (discriminante > 0) {
-            x1 = (-b + discriminante) / (2 * a)
-            x2 = (-b - discriminante) / (2 * a)
+            x1 = Math.round(((-b + discriminante) / (2 * a))*100)/100
+            x2 = Math.round(((-b - discriminante) / (2 * a))*100)/100
             campoCorteX1.innerHTML = `<mn>${x1}</mn>`
             campoCorteX2.innerHTML = `<mn>${x2}</mn>`
             campoCorteXAux.innerHTML = "y"
@@ -431,7 +432,7 @@
             campoCorteXAux.innerHTML = "∉"
             campoCorteX.innerHTML = `No hay puntos de corte con el eje x`
         } else {
-            x = -b / (2 * a)
+            x = Math.round((-b / (2 * a))*100)/100
             campoCorteX1.innerHTML = `<mn>${x}</mn>`
             campoCorteX2.innerHTML = ""
             campoCorteXAux.innerHTML = ""
@@ -447,8 +448,8 @@
         console.log("\nTabla de valores:")
         let valores = []
         for (let i = 0; i < 5; i++){
-            x_i = x_v + i - 2
-            y_i = a * x_i *x_i + b * x_i + c
+            x_i = Math.round((x_v + i - 2)*100)/100
+            y_i = Math.round((a * x_i *x_i + b * x_i + c)*100)/100
             valores.push((x_i, y_i))
             console.log(`(${x_i}, ${y_i})`)
         }
@@ -464,11 +465,11 @@
         let campoY4 = document.getElementById("campoY4")
         let campoY5 = document.getElementById("campoY5")
 
-        campoX1.innerHTML = x_v-2
-        campoX2.innerHTML = x_v-1
-        campoX3.innerHTML = x_v
-        campoX4.innerHTML = x_v+1
-        campoX5.innerHTML = x_v+2
+        campoX1.innerHTML = Math.round((x_v-2)*100)/100
+        campoX2.innerHTML = Math.round((x_v-1)*100)/100
+        campoX3.innerHTML = Math.round((x_v)*100)/100
+        campoX4.innerHTML = Math.round((x_v+1)*100)/100
+        campoX5.innerHTML = Math.round((x_v+2)*100)/100
 
         campoY1.innerHTML = valores[0]
         campoY2.innerHTML = valores[1]
